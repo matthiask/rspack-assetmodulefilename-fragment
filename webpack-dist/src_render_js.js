@@ -21,6 +21,16 @@ function render() {
     el.innerHTML = 'hello, world'
 }
 
+/***/ }),
+
+/***/ "./src/compass-2.svg#logbuch-3-1":
+/*!***************************************!*\
+  !*** ./src/compass-2.svg#logbuch-3-1 ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "compass-2.svg#logbuch-3-1";
+
 /***/ })
 
 }]);

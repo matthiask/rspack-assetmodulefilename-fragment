@@ -25,6 +25,7 @@ const config = {
       ? path.resolve(__dirname, "webpack-dist")
       : path.resolve(__dirname, "rspack-dist"),
     filename: "[name].js",
+    assetModuleFilename: "[name][ext][query][fragment]",
   },
   experiments: {
     css: true,

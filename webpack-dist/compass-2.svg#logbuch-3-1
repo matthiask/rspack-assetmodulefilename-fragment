@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <style>
+      use {
+        display: none;
+      }
+      use:target {
+        display: inline;
+      }
+    </style>
+    <symbol id="base" viewBox="0 0 84 92.343">
+      <g data-name="Group 718">
+        <g data-name="Group 649">
+          <path data-name="Path 2439" d="M35.66 92.332c19.722.489 35.5-16.391 35.5-36.608 1.328-24.588-14.382-34.717-35.5-36.609S-1.262 38.909.081 59.08c1.38 20.744 16.037 31.631 35.579 33.252" fill="" />
+          <g data-name="Group 455" fill="#fff">
+            <path data-name="Path 2440" d="M35.516 33.819c-12.266.878-22.509 9.869-21.7 22.66.74 11.684 8.3 21.619 20.385 22.649 13.854 1.181 23.989-9.389 25.115-22.649-.197-13.113-10.365-23.622-23.8-22.66zm.969 42.731l-.081-2.086c-.049-1.267-2.024-1.273-1.974 0q.04 1.012.077 2.023c-9.035-.722-17.521-7.094-18.628-19.186l2.853-.11c1.267-.048 1.272-2.022 0-1.974l-2.953.114c-.176-12.863 10.261-19.284 20.739-19.049q.052 1.31.1 2.622c.049 1.265 2.023 1.272 1.974 0l-.1-2.5c9.535.982 18.508 7.52 18.829 19.8l-2.83.109c-1.265.049-1.272 2.024 0 1.974q1.315-.049 2.627-.1C55.324 70.282 45.901 76.448 36.485 76.55z"/>
+            <path data-name="Path 2441" d="M44.915 43.993l-11.3 9.438a.891.891 0 00-.642.459l-.1.232a.754.754 0 00-.125.291q-2.961 6.848-5.919 13.7a.993.993 0 001.551 1.2l11.3-9.438a.891.891 0 00.642-.459c.033-.077.066-.155.1-.23a.815.815 0 00.125-.291l5.919-13.7a.993.993 0 00-1.551-1.202zm-10.772 12.14l3.654 2.749-7.576 6.327 3.922-9.077z"/>
+          </g>
+        </g>
+        <path data-name="Path 2591" d="M60.092 42.102c9.325.24 18.085-9.072 18.085-19.032-.634-12.2-7.442-16.749-18.085-15.984-11.153 1.2-16.681 6.048-16.046 15.984.655 10.214 6.809 18.232 16.046 19.032" fill="" />
+        <text data-name="+" transform="translate(51)" fill="#fff" font-size="35" font-family="Verveine-Regular, Verveine">
+          <tspan x="0" y="34">+</tspan>
+        </text>
+      </g>
+    </symbol>
+  </defs>
+  <use xlink:href="#base" id="logbuch-3-1" fill="#0fb8ed" />
+  <use xlink:href="#base" id="logbuch-3-2" fill="#5b6bb1" />
+  <use xlink:href="#base" id="logbuch-3-3" fill="#59b88a" />
+  <use xlink:href="#base" id="logbuch-3-4" fill="#3daabb" />
+  <use xlink:href="#base" id="logbuch-4-1" fill="#7c2484" />
+  <use xlink:href="#base" id="logbuch-4-2" fill="#ee7100" />
+  <use xlink:href="#base" id="logbuch-4-3" fill="#e94482" />
+  <use xlink:href="#base" id="logbuch-4-4" fill="#fab600" />
+  <use xlink:href="#base" id="logbuch-5-1" fill="#427b65" />
+  <use xlink:href="#base" id="logbuch-5-2" fill="#929f4a" />
+  <use xlink:href="#base" id="logbuch-5-3" fill="#2a8191" />
+  <use xlink:href="#base" id="logbuch-5-4" fill="#64a455" />
+  <use xlink:href="#base" id="logbuch-6-1" fill="#89586a" />
+  <use xlink:href="#base" id="logbuch-6-2" fill="#8c8760" />
+  <use xlink:href="#base" id="logbuch-6-3" fill="#b7514c" />
+  <use xlink:href="#base" id="logbuch-6-4" fill="#cb9c67" />
+</svg>
