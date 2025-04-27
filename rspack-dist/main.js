@@ -30,7 +30,7 @@ __webpack_require__.m = __webpack_modules__;
 /************************************************************************/
 // webpack/runtime/define_property_getters
 (() => {
-__webpack_require__.d = function(exports, definition) {
+__webpack_require__.d = (exports, definition) => {
 	for(var key in definition) {
         if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
             Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
@@ -43,41 +43,38 @@ __webpack_require__.d = function(exports, definition) {
 __webpack_require__.f = {};
 // This file contains only the entry chunk.
 // The chunk loading function for additional chunks
-__webpack_require__.e = function (chunkId) {
+__webpack_require__.e = (chunkId) => {
 	return Promise.all(
-		Object.keys(__webpack_require__.f).reduce(function (promises, key) {
+		Object.keys(__webpack_require__.f).reduce((promises, key) => {
 			__webpack_require__.f[key](chunkId, promises);
 			return promises;
 		}, [])
 	);
 };
-
 })();
 // webpack/runtime/get css chunk filename
 (() => {
 // This function allow to reference chunks
-        __webpack_require__.k = function (chunkId) {
-          // return url for filenames not based on template
-          
-          // return url for filenames based on template
-          return "" + chunkId + ".css";
-        };
-      
+__webpack_require__.k = (chunkId) => {
+  // return url for filenames not based on template
+  
+  // return url for filenames based on template
+  return "" + chunkId + ".css"
+}
 })();
 // webpack/runtime/get javascript chunk filename
 (() => {
 // This function allow to reference chunks
-        __webpack_require__.u = function (chunkId) {
-          // return url for filenames not based on template
-          
-          // return url for filenames based on template
-          return "" + chunkId + ".js";
-        };
-      
+__webpack_require__.u = (chunkId) => {
+  // return url for filenames not based on template
+  
+  // return url for filenames based on template
+  return "" + chunkId + ".js"
+}
 })();
 // webpack/runtime/global
 (() => {
-__webpack_require__.g = (function () {
+__webpack_require__.g = (() => {
 	if (typeof globalThis === 'object') return globalThis;
 	try {
 		return this || new Function('return this')();
@@ -85,14 +82,10 @@ __webpack_require__.g = (function () {
 		if (typeof window === 'object') return window;
 	}
 })();
-
 })();
 // webpack/runtime/has_own_property
 (() => {
-__webpack_require__.o = function (obj, prop) {
-	return Object.prototype.hasOwnProperty.call(obj, prop);
-};
-
+__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 })();
 // webpack/runtime/load_script
 (() => {
@@ -118,17 +111,19 @@ __webpack_require__.l = function (url, done, key, chunkId) {
 	}
 	if (!script) {
 		needAttach = true;
-		script = document.createElement('script');
 		
+    script = document.createElement('script');
+    
 		script.charset = 'utf-8';
 		script.timeout = 120;
 		if (__webpack_require__.nc) {
 			script.setAttribute("nonce", __webpack_require__.nc);
 		}
 		script.setAttribute("data-webpack", dataWebpackPrefix + key);
-		script.src = url;
-
 		
+		script.src = url;
+		
+    
 	}
 	inProgress[url] = [done];
 	var onScriptComplete = function (prev, event) {
@@ -159,45 +154,63 @@ __webpack_require__.l = function (url, done, key, chunkId) {
 // webpack/runtime/make_namespace_object
 (() => {
 // define __esModule on exports
-__webpack_require__.r = function(exports) {
+__webpack_require__.r = (exports) => {
 	if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 		Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 	}
 	Object.defineProperty(exports, '__esModule', { value: true });
 };
-
+})();
+// webpack/runtime/rspack_version
+(() => {
+__webpack_require__.rv = () => ("1.3.7")
 })();
 // webpack/runtime/auto_public_path
 (() => {
+var scriptUrl;
 
-    var scriptUrl;
-    if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
-    var document = __webpack_require__.g.document;
-    if (!scriptUrl && document) {
-      if (document.currentScript) scriptUrl = document.currentScript.src;
-        if (!scriptUrl) {
-          var scripts = document.getElementsByTagName("script");
-              if (scripts.length) {
-                var i = scripts.length - 1;
-                while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
-              }
-        }
-      }
-    
-    // When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration",
-    // or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.',
-    if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-    scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-    __webpack_require__.p = scriptUrl
-    
+if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+var document = __webpack_require__.g.document;
+if (!scriptUrl && document) {
+  // Technically we could use `document.currentScript instanceof window.HTMLScriptElement`,
+  // but an attacker could try to inject `<script>HTMLScriptElement = HTMLImageElement</script>`
+  // and use `<img name="currentScript" src="https://attacker.controlled.server/"></img>`
+  if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT') scriptUrl = document.currentScript.src;
+  if (!scriptUrl) {
+    var scripts = document.getElementsByTagName("script");
+    if (scripts.length) {
+      var i = scripts.length - 1;
+      while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+    }
+  }
+}
+
+// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration",
+// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.',
+if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+__webpack_require__.p = scriptUrl
 })();
 // webpack/runtime/css_loading
 (() => {
-var installedChunks = {"main": 0,};
+var installedChunks = {};
 var uniqueName = "rspack-repro";
-// loadCssChunkData is unnecessary
+function handleCssComposes(exports, composes) {
+  for (var i = 0; i < composes.length; i += 3) {
+    var moduleId = composes[i];
+    var composeFrom = composes[i + 1];
+    var composeVar = composes[i + 2];
+    var composedId = __webpack_require__(composeFrom)[composeVar];
+    exports[moduleId] = exports[moduleId] + " " + composedId
+  }
+}
+var loadCssChunkData = (target, chunkId) => {
+
+installedChunks[chunkId] = 0;
+
+}
 var loadingAttribute = "data-webpack-loading";
-var loadStylesheet = function (chunkId, url, done, hmr) {
+var loadStylesheet = function (chunkId, url, done, hmr, fetchPriority) {
 	var link,
 		needAttach,
 		key = "chunk-" + chunkId;
@@ -224,7 +237,13 @@ var loadStylesheet = function (chunkId, url, done, hmr) {
 	if (!link) {
 		needAttach = true;
 		link = document.createElement("link");
+		if (__webpack_require__.nc) {
+			link.setAttribute("nonce", __webpack_require__.nc);
+		}
 		link.setAttribute("data-webpack", uniqueName + ":" + key);
+		if (fetchPriority) {
+			link.setAttribute("fetchpriority", fetchPriority);
+		}
 		link.setAttribute(loadingAttribute, 1);
 		link.rel = "stylesheet";
 		link.href = url;
@@ -247,12 +266,11 @@ var loadStylesheet = function (chunkId, url, done, hmr) {
 		link.onerror = onLinkComplete.bind(null, link.onerror);
 		link.onload = onLinkComplete.bind(null, link.onload);
 	} else onLinkComplete(undefined, { type: "load", target: link });
-	hmr
-		? hmr.parentNode.insertBefore(link, hmr)
-		: needAttach && document.head.appendChild(link);
+	hmr ? document.head.insertBefore(link, hmr) : needAttach && document.head.appendChild(link);
 	return link;
 };
-__webpack_require__.f.css = function (chunkId, promises) {
+// no initial css
+__webpack_require__.f.css = function (chunkId, promises, fetchPriority) {
 	// css chunk loading
 	var installedChunkData = __webpack_require__.o(installedChunks, chunkId)
 		? installedChunks[chunkId]
@@ -296,35 +314,17 @@ __webpack_require__.f.css = function (chunkId, promises) {
 								error.request = realSrc;
 								installedChunkData[1](error);
 							} else {
-								// loadCssChunkData(__webpack_require__.m, link, chunkId);
+								loadCssChunkData(__webpack_require__.m, chunkId);
 								installedChunkData[0]();
 							}
 						}
 					}
 				};
-				var link = loadStylesheet(chunkId, url, loadingEnded);
+				var link = loadStylesheet(chunkId, url, loadingEnded, undefined, fetchPriority);
 			} else installedChunks[chunkId] = 0;
 		}
 	}
 };
-// TODO: different with webpack
-// webpack using `loadCssChunkData` and detect css variables to add install chunk.
-// Because rspack the css chunk is always generate one js chunk, so here use js chunk to add install chunk.
-var loadCssChunkCallback = function (parentChunkLoadingFunction, data) {
-	var chunkIds = data[0];
-	if (parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-	for (var i = 0; i < chunkIds.length; i++) {
-		if (installedChunks[chunkIds[i]] === undefined) {
-			installedChunks[chunkIds[i]] = 0;
-		}
-	}
-};
-var chunkLoadingGlobal = self['webpackChunkrspack_repro'] = self['webpackChunkrspack_repro'] || [];
-chunkLoadingGlobal.forEach(loadCssChunkCallback.bind(null, 0));
-chunkLoadingGlobal.push = loadCssChunkCallback.bind(
-	null,
-	chunkLoadingGlobal.push.bind(chunkLoadingGlobal)
-);
 
 })();
 // webpack/runtime/jsonp_chunk_loading
@@ -349,9 +349,7 @@ if (installedChunkData !== 0) {
 	} else {
 		if (true) {
 			// setup Promise in chunk cache
-			var promise = new Promise(function (resolve, reject) {
-				installedChunkData = installedChunks[chunkId] = [resolve, reject];
-			});
+			var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
 			promises.push((installedChunkData[2] = promise));
 
 			// start chunk loading
@@ -388,16 +386,12 @@ if (installedChunkData !== 0) {
 
         }
         // install a JSONP callback for chunk loading
-var webpackJsonpCallback = function (parentChunkLoadingFunction, data) {
-	var chunkIds = data[0];
-	var moreModules = data[1];
-	var runtime = data[2];
+var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+	var [chunkIds, moreModules, runtime] = data;
 	// add "moreModules" to the modules object,
 	// then flag all "chunkIds" as loaded and fire callback
-	var moduleId,
-		chunkId,
-		i = 0;
-	if (chunkIds.some(function (id) { return installedChunks[id] !== 0 })) {
+	var moduleId, chunkId, i = 0;
+	if (chunkIds.some((id) => (installedChunks[id] !== 0))) {
 		for (moduleId in moreModules) {
 			if (__webpack_require__.o(moreModules, moduleId)) {
 				__webpack_require__.m[moduleId] = moreModules[moduleId];
@@ -421,14 +415,20 @@ var webpackJsonpCallback = function (parentChunkLoadingFunction, data) {
 
 var chunkLoadingGlobal = self["webpackChunkrspack_repro"] = self["webpackChunkrspack_repro"] || [];
 chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
-chunkLoadingGlobal.push = webpackJsonpCallback.bind(
-	null,
-	chunkLoadingGlobal.push.bind(chunkLoadingGlobal)
-);
+chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+
+})();
+// webpack/runtime/rspack_unique_id
+(() => {
+__webpack_require__.ruid = "bundler=rspack@1.3.7";
 
 })();
 /************************************************************************/
 var __webpack_exports__ = {};
+
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
 __webpack_require__.e(/*! import() */ "src_render_js").then(__webpack_require__.bind(__webpack_require__, /*! ./render */ "./src/render.js")).then(exports => {
     exports.render()
 })

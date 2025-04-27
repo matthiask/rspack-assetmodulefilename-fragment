@@ -1,6 +1,16 @@
 "use strict";
 (self["webpackChunkrspack_repro"] = self["webpackChunkrspack_repro"] || []).push([["src_render_js"],{
 
+/***/ "./src/render.css":
+/*!****************************!*\
+  !*** css ./src/render.css ***!
+  \****************************/
+/***/ ((module) => {
+
+
+
+/***/ }),
+
 /***/ "./src/render.js":
 /*!***********************!*\
   !*** ./src/render.js ***!
@@ -20,16 +30,6 @@ function render() {
     document.getElementsByTagName('body')[0].appendChild(el)
     el.innerHTML = 'hello, world'
 }
-
-/***/ }),
-
-/***/ "./src/compass-2.svg#logbuch-3-1":
-/*!***************************************!*\
-  !*** ./src/compass-2.svg#logbuch-3-1 ***!
-  \***************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "compass-2.svg#logbuch-3-1";
 
 /***/ })
 

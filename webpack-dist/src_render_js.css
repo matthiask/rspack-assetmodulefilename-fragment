@@ -1,6 +1,8 @@
+/*!****************************!*\
+  !*** css ./src/render.css ***!
+  \****************************/
 .text {
     color: blue;
     background: url(compass-2.svg#logbuch-3-1);
 }
 
-head{--webpack-rspack-repro-src_render_js:&\.\/src\/render\.css;}

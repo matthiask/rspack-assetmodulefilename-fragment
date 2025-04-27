@@ -152,7 +152,7 @@
 /******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
 /******/ 		var document = __webpack_require__.g.document;
 /******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript)
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
 /******/ 				scriptUrl = document.currentScript.src;
 /******/ 			if (!scriptUrl) {
 /******/ 				var scripts = document.getElementsByTagName("script");
@@ -165,7 +165,7 @@
 /******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
 /******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
 /******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
 /******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
@@ -174,40 +174,11 @@
 /******/ 		// object to store loaded and loading chunks
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {"main":0};
+/******/ 		var installedChunks = {
+/******/ 		
+/******/ 		};
 /******/ 		
 /******/ 		var uniqueName = "rspack-repro";
-/******/ 		var loadCssChunkData = (target, link, chunkId) => {
-/******/ 			var data, token = "", token2 = "", exports = {}, name = "--webpack-" + uniqueName + "-" + chunkId, i, cc = 1;
-/******/ 			try {
-/******/ 				if(!link) link = loadStylesheet(chunkId);
-/******/ 				var cssRules = link.sheet.cssRules || link.sheet.rules;
-/******/ 				var j = cssRules.length - 1;
-/******/ 				while(j > -1 && !data) {
-/******/ 					var style = cssRules[j--].style;
-/******/ 					if(!style) continue;
-/******/ 					data = style.getPropertyValue(name);
-/******/ 				}
-/******/ 			}catch(e){}
-/******/ 			if(!data) {
-/******/ 				data = getComputedStyle(document.head).getPropertyValue(name);
-/******/ 			}
-/******/ 			if(!data) return [];
-/******/ 			// css head data compression is disabled
-/******/ 			for(i = 0; cc; i++) {
-/******/ 				cc = data.charCodeAt(i);
-/******/ 				if(cc == 58) { token2 = token; token = ""; }
-/******/ 				else if(cc == 47) { token = token.replace(/^_/, ""); token2 = token2.replace(/^_/, ""); exports[token2] = token; token = ""; token2 = ""; }
-/******/ 				else if(cc == 38) { __webpack_require__.r(exports); }
-/******/ 				else if(!cc || cc == 44) { token = token.replace(/^_/, ""); target[token] = ((exports, module) => {
-/******/ 					module.exports = exports;
-/******/ 				}).bind(null, exports); token = ""; token2 = ""; exports = {};  }
-/******/ 				else if(cc == 92) { token += data[++i] }
-/******/ 				else { token += data[i]; }
-/******/ 			}
-/******/ 			installedChunks[chunkId] = 0;
-/******/ 		
-/******/ 		}
 /******/ 		var loadingAttribute = "data-webpack-loading";
 /******/ 		var loadStylesheet = (chunkId, url, done) => {
 /******/ 			var link, needAttach, key = "chunk-" + chunkId;
@@ -222,6 +193,7 @@
 /******/ 			if(!link) {
 /******/ 				needAttach = true;
 /******/ 				link = document.createElement('link');
+/******/ 				link.charset = 'utf-8';
 /******/ 				if (__webpack_require__.nc) {
 /******/ 					link.setAttribute("nonce", __webpack_require__.nc);
 /******/ 				}
@@ -245,11 +217,10 @@
 /******/ 				link.onload = onLinkComplete.bind(null, link.onload);
 /******/ 			} else onLinkComplete(undefined, { type: 'load', target: link });
 /******/ 		
+/******/ 		
 /******/ 			needAttach && document.head.appendChild(link);
 /******/ 			return link;
 /******/ 		};
-/******/ 		// no initial css
-/******/ 		
 /******/ 		__webpack_require__.f.css = (chunkId, promises) => {
 /******/ 			// css chunk loading
 /******/ 			var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
@@ -282,13 +253,14 @@
 /******/ 										error.request = realHref;
 /******/ 										installedChunkData[1](error);
 /******/ 									} else {
-/******/ 										loadCssChunkData(__webpack_require__.m, link, chunkId);
+/******/ 										installedChunks[chunkId] = 0;
 /******/ 										installedChunkData[0]();
 /******/ 									}
 /******/ 								}
 /******/ 							}
 /******/ 						};
-/******/ 						var link = loadStylesheet(chunkId, url, loadingEnded);
+/******/ 		
+/******/ 							loadStylesheet(chunkId, url, loadingEnded);
 /******/ 					} else installedChunks[chunkId] = 0;
 /******/ 				}
 /******/ 			}
